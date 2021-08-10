@@ -604,4 +604,5 @@ class CourseAllowPIISharingInLTIFlag(ConfigurationModel):
     class Meta:
         # This model was moved from edx-platform, with intention of retaining existing data.
         # This is referencing the original table name.
+        managed=False
         db_table = "xblock_config_courseeditltifieldsenabledflag"
