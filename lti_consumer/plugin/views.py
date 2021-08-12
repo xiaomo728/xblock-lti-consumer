@@ -481,6 +481,7 @@ class LtiNrpsContextMembershipViewSet(viewsets.ReadOnlyModelViewSet):
         
         try:
             data = compat.get_course_members(course_key)
+            log.info("data from get_course_members: %s",data)
             
             user_ids = data.keys()
             for userid in user_ids:
@@ -495,7 +496,7 @@ class LtiNrpsContextMembershipViewSet(viewsets.ReadOnlyModelViewSet):
                 else:
                     data[userid]["family_name"] = family_name
             self.attach_external_user_ids(data)
-
+            log.info("data after the changes: %s",data)
             # build correct format for the serializer
             result = {
                 'id': self.request.build_absolute_uri(),
@@ -504,9 +505,10 @@ class LtiNrpsContextMembershipViewSet(viewsets.ReadOnlyModelViewSet):
                 },
                 'members': data.values(),
             }
-
+            log.info("result being sent: %s",data)
             # Serialize and return data NRPS reponse.
             serializer = self.get_serializer_class()(result)
+            log.info("serializer data: %s",serializer.data)
             return Response(serializer.data)
 
         except LtiError as ex:
