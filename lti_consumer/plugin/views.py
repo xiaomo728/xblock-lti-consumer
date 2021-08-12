@@ -138,6 +138,7 @@ def launch_gate_endpoint(request, suffix):
     OIDC response parameter `login_hint` to locate the block
     and run the proper handler.
     """
+    
     try:
         usage_key_str = request.GET.get('login_hint')
         usage_key = UsageKey.from_string(usage_key_str)
@@ -478,7 +479,7 @@ class LtiNrpsContextMembershipViewSet(viewsets.ReadOnlyModelViewSet):
 
         # get course key
         course_key = self.request.lti_configuration.location.course_key
-        
+        log.info("start processing member data.")
         try:
             data = compat.get_course_members(course_key)
             log.info("data from get_course_members: %s",data)
