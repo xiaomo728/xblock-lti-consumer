@@ -408,8 +408,8 @@ class LtiNrpsContextMemberPIISerializer(LtiNrpsContextMemberBasicSerializer):
     """
     name = serializers.CharField(required=False)
     email = serializers.EmailField(required=False)
-    given_name = serializers.CharField(required = False)
-    family_name = serializers.CharField(required = False)
+    #given_name = serializers.CharField(required = False)
+    #family_name = serializers.CharField(required = False)
 
 # pylint: disable=abstract-method
 class LtiNrpsContextMembershipBasicSerializer(serializers.Serializer):
