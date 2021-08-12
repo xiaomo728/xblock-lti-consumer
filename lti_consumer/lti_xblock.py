@@ -240,6 +240,7 @@ class LtiConsumerXBlock(StudioEditableXBlockMixin, XBlock):
     description = String(
         display_name=_("LTI Application Information"),
         help=_(
+            "This is custom Xblock-lti-consumer, version 3.0.5"
             "Enter a description of the third party application. "
             "If requesting username and/or email, use this text box to inform users "
             "why their username and/or email will be forwarded to a third party application."
