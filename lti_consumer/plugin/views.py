@@ -489,6 +489,8 @@ class LtiNrpsContextMembershipViewSet(viewsets.ReadOnlyModelViewSet):
                 full_name = data[userid]["name"]
                 full_name = full_name.replace(',', ' ')
                 name_list = full_name.split(' ', 1)
+                if(len(name_list) == 1):
+                    name_list.append('')
                 given_name = name_list[0]
                 family_name = name_list[1]
                 data[userid]["given_name"] = given_name
